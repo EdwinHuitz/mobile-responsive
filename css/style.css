@@ -18,7 +18,7 @@ in most browser configurations this will be 10px */
 }
 body 
 {
-    background-color:white;
+    background-color:black;
     /* Use a system font, if none are available use an available sans-sarif font */
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -27,37 +27,19 @@ body
     font-size: 2.4rem;
     font-weight: bold;
     height: 100vh;
-    /* mobile first - single column */
-    grid-template-columns: 1fr 4fr;
-    grid-template-rows: auto 1fr auto auto;
-    grid-template-areas: "content";
 }
-main 
+main
 {
-    grid-area: content;
     background-color:white;
-}
-/* Another way to center content, this time using flexbox */
-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 /* you have do declare what you're editing inside of the media query. Ex: you have to declare body{} in order to change the body's text and background color for this screen resolution */
 
-/* small screen */
-@media only screen and (max-width: 600px)
+/* small screens */
+@media only screen and (max-width: 479px)
 {
-    body 
-    {
-        /* phone - one column display */
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        grid-template-areas: "content";
-    }
+    
     main
     {
-        grid-area: content;
         display:grid;
         grid-template-columns: 1fr;
         height: 100vh;
@@ -144,8 +126,8 @@ main {
         font-weight:1;
     }
 }
-/* normal size screen */
-@media only screen and (min-width: 601px)
+/* tablet size screens */
+@media only screen and (min-width: 480px)
 {
     main
     {
@@ -164,6 +146,107 @@ main {
     {
         background-color: rgb(205, 205, 205);
         height:100vh;
+    }
+    main>h5
+    {
+        display:flex;
+        margin:0;
+        padding-left: 5px;
+        color:silver;
+        flex-direction: row;
+        grid-area:status;
+    }
+    main>img
+    {
+        border:solid;
+        border-color: limegreen;
+        border-radius: 50%;
+        margin:auto;
+        grid-area: pic;
+    }
+    main>div
+    {
+        grid-area: info;
+        text-align:left;
+        padding-left: 1vw;
+    }
+    main>nav
+    {
+        display:flex;
+        flex-direction: row;
+        align-items:center;
+        width: auto;
+        grid-area: buttons;
+    }
+    nav>button
+    {
+        width:50%;
+        height:20vh;
+        background-color:greenyellow;
+        border:none;
+    }
+    nav>button:last-child
+    {
+        margin-left:auto;
+        background-color:limegreen;
+    }
+    div>p 
+    {
+        text-align:left;
+        padding:0;
+        margin:0;
+    }
+    ul
+    {
+        margin:0 0 1vh 0;
+        padding:1vh;
+    }
+    ul>li
+    {
+        padding-left: 1vw;
+        border-left:solid;
+        border-width:5px;
+        border-color:green;
+        color:grey;
+        font-weight:1;
+        list-style-type: none;
+        text-align: left;
+    }
+    div>p
+    {
+        color:green;
+    }
+    div>p:last-child
+    {
+        color:grey;
+        padding:5px;
+        font-weight:1;
+    }
+
+}
+/* computer size screens */
+@media only screen and (min-width: 1000px)
+{
+    main
+    {
+        position:absolute;
+        top:10%;
+        left:10%;
+        height: 60vh;
+        width: 80vw;
+        margin:0;
+        display:grid;
+        grid-template-columns: 2fr 4fr;
+        grid-template-rows: auto 1fr auto;
+        grid-template-areas: 
+        "status info info"
+        "pic info info"
+        "buttons info info";
+    }
+    div
+    {
+        background-color: rgb(205, 205, 205);
+        height:100%;
     }
     main>h5
     {
